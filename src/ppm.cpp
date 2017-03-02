@@ -20,7 +20,7 @@ PPM :: PPM(std::string name, std::string type, int width, int height, int max) {
 }
 
 void PPM :: set_pixel(int x, int y, int color) {
-    map[x][y] = color;
+    map[y][x] = color;
     
 }
 
@@ -33,18 +33,34 @@ void PPM :: draw_line(int x1, int y1, int x2, int y2, int color) {
 
     }
 
-    double m = ((double) (y2 - y1)) / 
-               ((double) (x2 - x1));  // determine slope of the line being drawn
+    double m;
+    if(x2 - x1 == 0) {
+        m = (double) y2 - y1;
+
+    } else {
+        m = ((double) (y2 - y1)) / 
+            ((double) (x2 - x1));  // determine slope of the line being drawn
+
+    }
+    
+    if(y2 - y1 == 0) {
+        m = 0;
+
+    }
+
+    cout << m << endl;
 
     double b = y1 - (m * x1);         // determine line constant
 
     for(double x = x1; x <= x2; x += .01) {
         int yToBeDrawn = (m * x) + b;
         set_pixel((int) x, yToBeDrawn, color);
+    /*
         set_pixel((int) x + 1, yToBeDrawn, color);
         set_pixel((int) x - 1, yToBeDrawn, color);
         set_pixel((int) x, yToBeDrawn + 1, color);
         set_pixel((int) x, yToBeDrawn - 1, color);
+    */
 
     }
     
