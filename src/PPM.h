@@ -1,3 +1,8 @@
+#include <string>
+#include <stdlib.h>
+#include <iostream>
+#include <fstream>
+
 class PPM {
 
 private:
