@@ -50,7 +50,6 @@ void PPM :: draw_line(int x1, int y1, int x2, int y2, int color) {
 
     }
 
-    cout << x1 << " " <<  y1 << " " << x2 << " " << y2 << endl;
 
     double b = y1 - (m * x1);         // determine line constant
 
